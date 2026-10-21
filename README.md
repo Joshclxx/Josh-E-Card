@@ -23,11 +23,11 @@ The production output is in `dist/`. No environment variables, API keys, backend
 
 ## Update the card
 
-Edit [`src/profile.ts`](src/profile.ts) for the name, role, location, email, introduction, asset paths, Instagram handle, and destination URLs.
+Edit [`src/profile.ts`](src/profile.ts) for the name, role, location, email, mobile and Viber numbers, introduction, asset paths, and destination URLs. Phone numbers are stored in international format; local display numbers and action links are derived from them.
 
-LinkedIn, Facebook, GitHub, and portfolio URLs are deliberately `null` because none were supplied. Replace each `null` with the correct full `https://` URL when available. The social icon becomes a working link automatically, and the portfolio row becomes clickable. Until then, social buttons have an unavailable indicator and an explanatory tooltip; the portfolio says “Link not added yet.” No profiles are guessed.
+The four circular buttons link to the supplied LinkedIn, Instagram, Facebook, and GitHub profiles. Instagram uses the corrected `_joshclxx` username. The contact section contains six uniform full-width cards: Email, WhatsApp, Viber, Threads, X, and TikTok. Each uses the same icon tile, spacing, and chevron. The empty portfolio row is removed because no website was supplied. The TikTok link keeps the supplied profile path and omits its tracking query parameters.
 
-The email action subject is also defined in `src/profile.ts`. Let’s Connect, Email, and the project CTA all use this same action.
+Call Me uses `tel:+639924038038` to open the visitor’s phone/calling app. The email action appears only in the Email row, and WhatsApp uses the same mobile number for messaging. The project CTA navigates to the contact options instead of repeating the email action. Viber uses an application link and requires a compatible Viber installation.
 
 ## Local assets
 
@@ -42,11 +42,11 @@ These files are copied from the user’s supplied assets. No image generation or
 - 600–1179px: wider profile layout, with social icons beside the introduction.
 - From 1180px: profile panel and contact panel in two columns, with a full-width CTA below.
 - All layouts scroll naturally. Focus rings, a skip link, accessible control names, 44px minimum targets, and reduced motion support are included.
-- Save Contact generates a vCard 3.0 `.vcf` file with CRLF line endings and escaped field values, including only name, professional title, and email.
+- Save Contact generates a vCard 3.0 `.vcf` file with CRLF line endings and escaped field values. It prefills Joshua’s name, professional title, email, and mobile number (`+639924038038`), with WhatsApp and Viber details in its notes. A visible confirmation explains how to import the downloaded card.
 - Share uses the Web Share API where available, then clipboard copying. If both fail, a focused, selected link supports manual copying. Escape or the dismiss button closes the message and restores focus to Share.
 - External links open in a new tab with `noopener noreferrer`.
 
-Sharing and clipboard support depend on the browser and typically require HTTPS or localhost. Email actions depend on the visitor’s configured mail application.
+Sharing and clipboard support depend on the browser and typically require HTTPS or localhost. Calling, email, and Viber actions depend on installed applications. A telephone link can require confirmation before calling. Contact imports also require the visitor’s confirmation; a website cannot silently add a contact or guarantee that every mobile browser opens Contacts directly. On Android, open the VCF file or use Contacts → Organize → Import from file. See [Apple’s contact-import guidance](https://support.apple.com/en-ie/guide/iphone/iph356499f31/ios) and [Google’s VCF import instructions](https://support.google.com/contacts/answer/15147365?co=GENIE.Platform%3DAndroid&hl=en).
 
 ## Validation and screenshots
 

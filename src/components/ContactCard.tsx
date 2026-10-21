@@ -1,12 +1,27 @@
-import { BriefcaseBusiness, ChevronRight, Instagram, Mail } from "lucide-react";
+import {
+  AtSign,
+  ChevronRight,
+  Mail,
+  MessageCircle,
+  Music2,
+  Phone,
+  X,
+} from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { contactHref, profile } from "../profile";
+import {
+  contactHref,
+  mobileDisplay,
+  profile,
+  viberDisplay,
+  viberHref,
+  whatsappHref,
+} from "../profile";
 
 interface ContactCardProps {
   title: string;
   description: string;
   icon: LucideIcon;
-  href: string | null;
+  href: string;
   external?: boolean;
 }
 
@@ -25,22 +40,10 @@ export function ContactCard({
       <span className="contact-copy min-w-0">
         <span className="contact-title block">{title}</span>
         <span className="contact-description block">{description}</span>
-        {!href && (
-          <span className="unavailable-label block">Link not added yet</span>
-        )}
       </span>
       <ChevronRight className="contact-chevron shrink-0" aria-hidden="true" />
     </>
   );
-  if (!href)
-    return (
-      <div
-        className="contact-card unavailable-card flex items-center"
-        aria-label={`${title}: ${description}. Link not added yet.`}
-      >
-        {contents}
-      </div>
-    );
   return (
     <a
       className="contact-card flex items-center"
@@ -57,7 +60,9 @@ export function ContactCard({
 export function ContactSection() {
   return (
     <section className="contact-section" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Connect with me</h2>
+      <h2 id="contact-heading" tabIndex={-1}>
+        Connect with me
+      </h2>
       <div className="contact-list grid">
         <ContactCard
           title="Email"
@@ -66,17 +71,37 @@ export function ContactSection() {
           href={contactHref}
         />
         <ContactCard
-          title="Portfolio"
-          description="Explore my work"
-          icon={BriefcaseBusiness}
-          href={profile.destinations.portfolio}
+          title="WhatsApp"
+          description={mobileDisplay}
+          icon={MessageCircle}
+          href={whatsappHref}
           external
         />
         <ContactCard
-          title="Instagram"
-          description={profile.instagramHandle}
-          icon={Instagram}
-          href={profile.destinations.instagram}
+          title="Viber"
+          description={viberDisplay}
+          icon={Phone}
+          href={viberHref}
+        />
+        <ContactCard
+          title="Threads"
+          description={profile.handles.threads}
+          icon={AtSign}
+          href={profile.destinations.threads}
+          external
+        />
+        <ContactCard
+          title="X"
+          description={profile.handles.x}
+          icon={X}
+          href={profile.destinations.x}
+          external
+        />
+        <ContactCard
+          title="TikTok"
+          description={profile.handles.tiktok}
+          icon={Music2}
+          href={profile.destinations.tiktok}
           external
         />
       </div>

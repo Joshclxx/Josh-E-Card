@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { contactHref } from "../profile";
+import { callHref } from "../profile";
 import { downloadContact } from "../lib/contact";
 
 export function ActionButtons() {
@@ -9,7 +9,7 @@ export function ActionButtons() {
     try {
       downloadContact();
       setMessage(
-        "Contact file ready. Open the downloaded .vcf file to save Joshua’s contact.",
+        "Contact card ready. Open the downloaded file and choose Add to Contacts or Import to save Joshua’s name, email, and mobile number.",
       );
     } catch {
       setMessage("The contact file could not be downloaded. Please try again.");
@@ -21,10 +21,10 @@ export function ActionButtons() {
       <button className="action-button secondary-action" onClick={saveContact}>
         Save Contact
       </button>
-      <a className="action-button primary-action" href={contactHref}>
-        Let’s Connect
+      <a className="action-button primary-action" href={callHref}>
+        Call Me
       </a>
-      <p className="sr-only" role="status">
+      <p className={message ? "contact-save-status" : "sr-only"} role="status">
         {message}
       </p>
     </div>

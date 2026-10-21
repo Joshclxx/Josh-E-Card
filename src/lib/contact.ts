@@ -18,6 +18,8 @@ export function createVCard(contact: Profile): string {
     `FN:${escapeVCard(`${contact.firstName} ${contact.lastName}`)}`,
     `TITLE:${escapeVCard(contact.role)}`,
     `EMAIL;TYPE=INTERNET:${escapeVCard(contact.email)}`,
+    `TEL;TYPE=CELL:${escapeVCard(contact.mobile)}`,
+    `NOTE:${escapeVCard(`WhatsApp: ${contact.mobile}\nViber: ${contact.viber}`)}`,
     "END:VCARD",
     "",
   ].join("\r\n");
@@ -31,9 +33,12 @@ export function downloadContact(): void {
   const link = document.createElement("a");
   link.href = url;
   link.download = "joshua-colobong.vcf";
-  document.body.append(link);
-  link.click();
-  link.remove();
-  // Defer revocation so browsers can begin consuming the download URL.
-  window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  try {
+    document.body.append(link);
+    link.click();
+  } finally {
+    link.remove();
+    // Defer revocation so browsers can begin consuming the download URL.
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
 }

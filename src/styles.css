@@ -197,6 +197,16 @@ h1 {
   border-right-color: #ff5000;
   border-bottom-color: #ff5000;
 }
+.contact-save-status {
+  grid-column: 1 / -1;
+  padding: 10px 12px;
+  border: 1px solid #444;
+  border-radius: 10px;
+  color: #d0d1d5;
+  background: #1b1b1b;
+  font-size: 13px;
+  line-height: 1.5;
+}
 .social-introduction {
   margin-top: 17px;
 }
@@ -212,59 +222,6 @@ h1 {
 .social-button svg {
   width: 42%;
   height: 42%;
-}
-.unavailable-social {
-  position: relative;
-}
-.social-button[aria-disabled="true"] {
-  cursor: default;
-}
-.unavailable-indicator {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 15px;
-  height: 15px;
-  border: 1px solid #696969;
-  border-radius: 50%;
-  background: #222;
-  color: #b6b6b6;
-  display: grid;
-  place-items: center;
-  font-size: 12px;
-  line-height: 1;
-}
-.social-tooltip {
-  position: absolute;
-  top: calc(100% + 7px);
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  background: #303030;
-  color: #fff;
-  border: 1px solid #626262;
-  border-radius: 6px;
-  width: 118px;
-  padding: 7px;
-  font-size: 11px;
-  text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-.unavailable-social:hover .social-tooltip,
-.unavailable-social:focus-within .social-tooltip {
-  visibility: visible;
-  opacity: 1;
-}
-.unavailable-social:first-child .social-tooltip {
-  left: 0;
-  transform: none;
-}
-.unavailable-social:last-child .social-tooltip {
-  left: auto;
-  right: 0;
-  transform: none;
 }
 .introduction {
   color: #c5c6cd;
@@ -328,15 +285,6 @@ h1 {
   height: 28px;
   color: #c9cbd1;
   stroke-width: 1.8;
-}
-.unavailable-card .contact-chevron {
-  opacity: 0.35;
-}
-.unavailable-label {
-  color: #a9a9b0;
-  font-size: 10px;
-  line-height: 1.2;
-  margin-top: 3px;
 }
 .project-cta {
   gap: 16px;
@@ -613,9 +561,6 @@ h1 {
     width: 27px;
     height: 32px;
   }
-  .unavailable-label {
-    font-size: 11px;
-  }
   .project-cta {
     min-height: 91px;
     gap: 33px;
@@ -746,37 +691,37 @@ h1 {
     line-height: 1.3;
   }
   .contact-section {
-    padding: 35px 21px 27px;
+    padding: 27px 21px;
   }
   .contact-section h2 {
     font-size: clamp(33px, 3.35vw, 50px);
-    margin: 0 11px 31px;
+    margin: 0 11px 22px;
     letter-spacing: -0.035em;
   }
   .contact-list {
-    gap: 19px;
+    gap: 10px;
   }
   .contact-card {
-    min-height: 124px;
-    gap: 24px;
-    padding: 21px 23px;
-    border-radius: 23px;
-  }
-  .contact-icon {
-    width: 70px;
-    height: 72px;
+    min-height: 82px;
+    gap: 18px;
+    padding: 12px 16px;
     border-radius: 18px;
   }
+  .contact-icon {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+  }
   .contact-icon svg {
-    width: 38px;
-    height: 38px;
+    width: 30px;
+    height: 30px;
   }
   .contact-title {
-    font-size: 27px;
+    font-size: 22px;
   }
   .contact-description {
-    font-size: clamp(16px, 1.48vw, 22px);
-    margin-top: 6px;
+    font-size: 16px;
+    margin-top: 4px;
   }
   .contact-chevron {
     width: 25px;

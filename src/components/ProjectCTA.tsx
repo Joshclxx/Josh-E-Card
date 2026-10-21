@@ -1,9 +1,8 @@
 import { ArrowRight, Lightbulb } from "lucide-react";
-import { contactHref } from "../profile";
 
 export function ProjectCTA() {
   return (
-    <a className="project-cta flex items-center" href={contactHref}>
+    <a className="project-cta flex items-center" href="#contact-heading">
       <span className="project-icon flex items-center justify-center">
         <Lightbulb aria-hidden="true" strokeWidth={1.5} />
       </span>
