@@ -1,5 +1,6 @@
 import { profile } from "../profile";
 import type { Profile } from "../profile";
+import contactPhoto from "../assets/contact-photo.jpg?inline";
 
 function escapeVCard(value: string): string {
   return value
@@ -9,8 +10,25 @@ function escapeVCard(value: string): string {
     .replace(/,/g, "\\,");
 }
 
-// vCard 3.0 requires CRLF lines; escape fields before joining structured values.
-export function createVCard(contact: Profile): string {
+// Fold at 75 UTF-8 bytes without splitting a character; continuation lines start with a space.
+function foldVCardLine(line: string): string {
+  const encoder = new TextEncoder();
+  let folded = "";
+  let lineBytes = 0;
+  for (const character of line) {
+    const characterBytes = encoder.encode(character).length;
+    if (lineBytes + characterBytes > 75) {
+      folded += "\r\n ";
+      lineBytes = 1;
+    }
+    folded += character;
+    lineBytes += characterBytes;
+  }
+  return folded;
+}
+
+// Embed the JPEG bytes so Contacts can import the photo without fetching an external URL.
+export function createVCard(contact: Profile, photoBase64: string): string {
   return [
     "BEGIN:VCARD",
     "VERSION:3.0",
@@ -20,13 +38,18 @@ export function createVCard(contact: Profile): string {
     `EMAIL;TYPE=INTERNET:${escapeVCard(contact.email)}`,
     `TEL;TYPE=CELL:${escapeVCard(contact.mobile)}`,
     `NOTE:${escapeVCard(`WhatsApp: ${contact.mobile}\nViber: ${contact.viber}`)}`,
+    `PHOTO;ENCODING=b;TYPE=JPEG:${photoBase64}`,
     "END:VCARD",
     "",
-  ].join("\r\n");
+  ]
+    .map(foldVCardLine)
+    .join("\r\n");
 }
 
 export function downloadContact(): void {
-  const file = new Blob([createVCard(profile)], {
+  // Vite's inline JPEG import is a data URL, available synchronously on the user's click.
+  const photoBase64 = contactPhoto.slice("data:image/jpeg;base64,".length);
+  const file = new Blob([createVCard(profile, photoBase64)], {
     type: "text/vcard;charset=utf-8",
   });
   const url = URL.createObjectURL(file);

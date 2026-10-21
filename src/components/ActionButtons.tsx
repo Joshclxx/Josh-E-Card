@@ -9,7 +9,7 @@ export function ActionButtons() {
     try {
       downloadContact();
       setMessage(
-        "Contact card ready. Open the downloaded file and choose Add to Contacts or Import to save Joshua’s name, email, and mobile number.",
+        "Contact card ready, including Joshua’s profile photo. Open the downloaded file and choose Add to Contacts or Import to save his details. Photo support depends on your Contacts app.",
       );
     } catch {
       setMessage("The contact file could not be downloaded. Please try again.");

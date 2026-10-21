@@ -33,6 +33,7 @@ Call Me uses `tel:+639924038038` to open the visitor’s phone/calling app. The 
 
 - `public/assets/joshua-portrait.png`: the supplied navy-polo portrait with its original orange and navy background. The original file is preserved; CSS crops its display without stretching or modifying the face.
 - `public/assets/josh-logo.png`: the supplied official JC monogram, also used as the favicon. CSS accommodates the source image’s transparent padding in the header.
+- `src/assets/contact-photo.jpg`: a 400 × 400px JPEG copy of the supplied portrait for contact imports. Vite embeds it in the bundle so Save Contact can include the photo without an extra network request.
 
 These files are copied from the user’s supplied assets. No image generation or external stock images are used. Brand SVGs represent LinkedIn, Facebook, and GitHub; Lucide supplies Instagram and interface icons.
 
@@ -42,7 +43,7 @@ These files are copied from the user’s supplied assets. No image generation or
 - 600–1179px: wider profile layout, with social icons beside the introduction.
 - From 1180px: profile panel and contact panel in two columns, with a full-width CTA below.
 - All layouts scroll naturally. Focus rings, a skip link, accessible control names, 44px minimum targets, and reduced motion support are included.
-- Save Contact generates a vCard 3.0 `.vcf` file with CRLF line endings and escaped field values. It prefills Joshua’s name, professional title, email, and mobile number (`+639924038038`), with WhatsApp and Viber details in its notes. A visible confirmation explains how to import the downloaded card.
+- Save Contact generates a vCard 3.0 `.vcf` file with CRLF line endings, escaped field values, and lines folded at 75 UTF-8 bytes. It prefills Joshua’s name, professional title, email, and mobile number (`+639924038038`), with WhatsApp and Viber details in its notes. The portrait is embedded as a base64 JPEG `PHOTO` field following [the vCard 3.0 photo format](https://www.rfc-editor.org/info/rfc2426/). A visible confirmation explains how to import the downloaded card. Contacts apps that support imported vCard photos can save it with the contact; photo handling varies by app.
 - Share uses the Web Share API where available, then clipboard copying. If both fail, a focused, selected link supports manual copying. Escape or the dismiss button closes the message and restores focus to Share.
 - External links open in a new tab with `noopener noreferrer`.
 
