@@ -1,5 +1,18 @@
 # Validation report
 
+## CTA sizing update — October 22, 2026
+
+- `npm run build` and `git diff --check`: PASS.
+- Chrome layout checks at 280, 320, 375, 390, 599, 600, 768, 820, 1024, 1179, 1180, 1440, and 1920px: no horizontal overflow; all visible links and buttons measure at least 44 × 44px.
+- Main actions use 16px text, a 48px mobile minimum height, and a 44px minimum height from 600px. Wider groups are capped at 360px. Social controls use the same responsive target sizes; Share remains 44px.
+- The project banner measures 72px high at tablet and desktop widths, replacing the previous desktop 108px minimum. Contact rows measure 72px at those widths, with 16px titles and 14px descriptions.
+- Dark text on the orange primary button has at least 5.59:1 contrast across the gradient endpoints and hover color. This supersedes the large white text treatment described in the earlier report below.
+- Call Me includes an 18px filled phone icon matching the label color. Browser checks at 280, 375, 768, and 1440px confirm its fill, unchanged telephone destination, and no horizontal overflow.
+- Screenshots: `output/playwright/cta-375.png`, `cta-768.png`, and `cta-1440.png`. Mobile and desktop were visually inspected. The local development page reports no browser errors or warnings.
+- Verification covers local Chrome layout and build output. Native application handoffs and other browsers were not re-tested for this visual update.
+
+The earlier contact-update report follows; its sizing and primary-button contrast notes describe the previous styles.
+
 Updated on October 21, 2026 using Node 24 and Chrome through Playwright CLI, after adding the supplied social profiles, phone numbers, and Call Me action.
 
 ## Build and source review
