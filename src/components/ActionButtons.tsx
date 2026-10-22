@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Phone } from "lucide-react";
 import { callHref } from "../profile";
 import { downloadContact } from "../lib/contact";
 
@@ -22,6 +23,7 @@ export function ActionButtons() {
         Save Contact
       </button>
       <a className="action-button primary-action" href={callHref}>
+        <Phone className="action-icon" aria-hidden="true" />
         Call Me
       </a>
       <p className={message ? "contact-save-status" : "sr-only"} role="status">
