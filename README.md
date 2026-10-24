@@ -25,9 +25,9 @@ The production output is in `dist/`. No environment variables, API keys, backend
 
 Edit [`src/profile.ts`](src/profile.ts) for the name, role, location, email, mobile and Viber numbers, introduction, asset paths, and destination URLs. Phone numbers are stored in international format; local display numbers and action links are derived from them.
 
-The four circular buttons link to the supplied LinkedIn, Instagram, Facebook, and GitHub profiles. Instagram uses the corrected `_joshclxx` username. The contact section contains six uniform full-width cards: Email, WhatsApp, Viber, Threads, X, and TikTok. Each uses the same icon tile, spacing, and chevron. The empty portfolio row is removed because no website was supplied. The TikTok link keeps the supplied profile path and omits its tracking query parameters.
+The five circular buttons link to LinkedIn, Instagram, Facebook, Email, and GitHub, with Email immediately before GitHub. Instagram uses the corrected `_joshclxx` username. The contact section contains six uniform full-width cards: Portfolio, WhatsApp, Viber, Threads, X, and TikTok. Portfolio links to `https://joshclxx-portfolio-alpha.vercel.app/`. Each card uses the same icon tile, spacing, and chevron. The TikTok link keeps the supplied profile path and omits its tracking query parameters.
 
-Call Me uses `tel:+639924038038` to open the visitor’s phone/calling app. The email action appears only in the Email row, and WhatsApp uses the same mobile number for messaging. The project CTA navigates to the contact options instead of repeating the email action. Viber uses an application link and requires a compatible Viber installation.
+Call Me uses `tel:+639924038038` to open the visitor’s phone/calling app. The email action appears in the circular Email button, and WhatsApp uses the same mobile number for messaging. The project CTA navigates to the contact options instead of repeating the email action. Viber uses an application link and requires a compatible Viber installation.
 
 ## Local assets
 

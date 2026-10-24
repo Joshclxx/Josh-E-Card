@@ -699,7 +699,12 @@ h1 {
     gap: 4px;
   }
   .social-links {
-    padding-inline: 4px;
+    gap: 4px;
+    padding-inline: 0;
+  }
+  .social-button {
+    width: 44px;
+    height: 44px;
   }
   .contact-card {
     gap: 12px;

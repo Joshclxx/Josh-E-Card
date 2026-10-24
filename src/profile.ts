@@ -15,6 +15,7 @@ export interface Profile {
     readonly tiktok: string;
   };
   readonly destinations: {
+    readonly portfolio: string;
     readonly instagram: string;
     readonly linkedin: string;
     readonly facebook: string;
@@ -43,6 +44,7 @@ export const profile: Profile = {
     tiktok: "@joshclxx",
   },
   destinations: {
+    portfolio: "https://joshclxx-portfolio-alpha.vercel.app/",
     instagram: "https://www.instagram.com/_joshclxx/",
     linkedin: "https://www.linkedin.com/in/joshclxx/",
     facebook: "https://www.facebook.com/joshclxx/",

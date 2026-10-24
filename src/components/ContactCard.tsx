@@ -1,7 +1,7 @@
 import {
   AtSign,
   ChevronRight,
-  Mail,
+  Globe,
   MessageCircle,
   Music2,
   Phone,
@@ -9,7 +9,6 @@ import {
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import {
-  contactHref,
   mobileDisplay,
   profile,
   viberDisplay,
@@ -65,10 +64,11 @@ export function ContactSection() {
       </h2>
       <div className="contact-list grid">
         <ContactCard
-          title="Email"
-          description={profile.email}
-          icon={Mail}
-          href={contactHref}
+          title="Portfolio"
+          description="View my work"
+          icon={Globe}
+          href={profile.destinations.portfolio}
+          external
         />
         <ContactCard
           title="WhatsApp"
